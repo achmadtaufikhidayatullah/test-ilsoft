@@ -61,7 +61,7 @@
       <!-- /.social-auth-links -->
 
       <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new account</a>
+        <a href="{{ route('regist') }}" class="text-center">Register a new account</a>
       </p>
     </div>
     <!-- /.card-body -->

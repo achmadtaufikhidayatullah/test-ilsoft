@@ -138,4 +138,27 @@ class UserController extends Controller
             'data'   => $data,
          ], 201);
     }
+
+
+
+    public function regist(Request $request)
+    {
+
+      //   dd($request->all());
+        $emailValidate = User::where('email' , $request->email)->first();
+
+        if ($emailValidate != null) {
+            return redirect()->route('regist')->with('error', "Email is already exists");
+        }
+
+        // Create User
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->remember_token = Str::random(60);
+        $user->save();
+
+        return redirect()->route('regist')->with('success', "Your account has been created! you can go to login page");
+    }
 }

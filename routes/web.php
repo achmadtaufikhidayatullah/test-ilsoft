@@ -30,3 +30,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/regist', function () {
+    return view('auth.register-lte');
+})->name('regist');
+Route::post('/regist', [App\Http\Controllers\UserController::class, 'regist'])->name('regist.post');
